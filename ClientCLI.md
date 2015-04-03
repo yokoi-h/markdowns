@@ -2,7 +2,7 @@
 
 ## globalサブコマンド
 ```
-% gobgpcli global  //global-ribの表示
+% gobgpcli global rib //global-ribの表示
 ```
 
 ## neighborサブコマンド
