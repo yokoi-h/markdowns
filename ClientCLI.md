@@ -11,18 +11,18 @@
  % gobgpcli neighbor <neighbor address>                                                         //neighborの状態表示
  % gobgpcli neighbor <neighbor address> shutdown                                                //neighborのshutdown
  % gobgpcli neighbor <neighbor address> reset                                                   //neighborのreset
- % gobgpcli neighbor <neighbor address> <family> softreset                                      //neighborのsoftreset
- % gobgpcli neighbor <neighbor address> <family> softresetin                                    //neighborのsoftresetin
- % gobgpcli neighbor <neighbor address> <family> softresetout　                                 //neighborのsoftreset
+ % gobgpcli neighbor <neighbor address> -f <family> softreset                                      //neighborのsoftreset
+ % gobgpcli neighbor <neighbor address> -f <family> softresetin                                    //neighborのsoftresetin
+ % gobgpcli neighbor <neighbor address> -f <family> softresetout　                                 //neighborのsoftreset
  % gobgpcli neighbor <neighbor address> enable                                                  //neighborのenable
  % gobgpcli neighbor <neighbor address> disable                                                 //neighborのdisable
- % gobgpcli neighbor <neighbor address> <family> local-rib                                      //neighborのlocal-rib表示
- % gobgpcli neighbor <neighbor address> <family> adj-rib-in                                     //neighborのadj-rib-in表示
- % gobgpcli neighbor <neighbor address> <family> rib adj-rib-out                                //neighborのadj-rib-out表示
- % gobgpcli neighbor <neighbor address> <family> applypolicy                                    //neighborのapplypolicy追加
+ % gobgpcli neighbor <neighbor address> -f <family> local-rib                                      //neighborのlocal-rib表示
+ % gobgpcli neighbor <neighbor address> -f <family> adj-rib-in                                     //neighborのadj-rib-in表示
+ % gobgpcli neighbor <neighbor address> -f <family> rib adj-rib-out                                //neighborのadj-rib-out表示
+ % gobgpcli neighbor <neighbor address> -f <family> applypolicy                                    //neighborのapplypolicy追加
  　add <import policy name> <export policy name> <default import policy> <default export policy>
- % gobgpcli neighbor <neighbor address> <family> applypolicy del　　　　　　　                    //neighborのapplypolicy削除
- % gobgpcli neighbor <neighbor address> <family> applypolicy                                    //neighborのapplypolicy表示
+ % gobgpcli neighbor <neighbor address> -f <family> applypolicy del　　　　　　　                    //neighborのapplypolicy削除
+ % gobgpcli neighbor <neighbor address> -f <family> applypolicy                                    //neighborのapplypolicy表示
  ```
 
 ## policyサブコマンド
