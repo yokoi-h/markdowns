@@ -20,20 +20,20 @@ gobgpcli \<subcommand> \<object>  opts...
 
 ### neighborの各種操作(shutdown/reset/softreset/enable/disable)
 ```shell
- % gobgpcli neighbor <neighbor address> shutdown                                               
- % gobgpcli neighbor <neighbor address> reset                                                  
- % gobgpcli neighbor <neighbor address> softreset -f <family>
- % gobgpcli neighbor <neighbor address> softresetin -f <family>
- % gobgpcli neighbor <neighbor address> softresetout -f <family>
- % gobgpcli neighbor <neighbor address> enable                                               
- % gobgpcli neighbor <neighbor address> disable                                              
+% gobgpcli neighbor <neighbor address> shutdown                                               
+% gobgpcli neighbor <neighbor address> reset                                                  
+% gobgpcli neighbor <neighbor address> softreset -f <family>
+% gobgpcli neighbor <neighbor address> softresetin -f <family>
+% gobgpcli neighbor <neighbor address> softresetout -f <family>
+% gobgpcli neighbor <neighbor address> enable                                               
+% gobgpcli neighbor <neighbor address> disable                                              
 ```
 
 ### ribの表示(local-rib/adj-rib-in/adj-rib-out)
 ```shell
- % gobgpcli neighbor <neighbor address> local-rib -f <family>
- % gobgpcli neighbor <neighbor address> adj-rib-in -f <family>
- % gobgpcli neighbor <neighbor address> adj-rib-out -f <family> 
+% gobgpcli neighbor <neighbor address> local-rib -f <family>
+% gobgpcli neighbor <neighbor address> adj-rib-in -f <family>
+% gobgpcli neighbor <neighbor address> adj-rib-out -f <family> 
  
 ```
 
