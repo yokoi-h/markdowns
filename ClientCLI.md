@@ -1,46 +1,78 @@
 # クライアントCLIコマンド体系
 
+## 基本パターン
+gobgpcli \<subcommand> \<object>  opts...
+
 ## globalサブコマンド
-```
-% gobgpcli global rib //global-ribの表示
+### global-ribの表示
+```shell
+% gobgpcli global rib
 ```
 
 ## neighborサブコマンド
-```
+### neighborの状態表示
+```shell
  % gobgpcli neighbor                                                                            //neighborの状態表示(一覧)
  % gobgpcli neighbor <neighbor address>                                                         //neighborの状態表示
- % gobgpcli neighbor <neighbor address> shutdown                                                //neighborのshutdown
- % gobgpcli neighbor <neighbor address> reset                                                   //neighborのreset
- % gobgpcli neighbor <neighbor address> -f <family> softreset                                   //neighborのsoftreset
- % gobgpcli neighbor <neighbor address> -f <family> softresetin                                 //neighborのsoftresetin
- % gobgpcli neighbor <neighbor address> -f <family> softresetout　                              //neighborのsoftreset
- % gobgpcli neighbor <neighbor address> enable                                                  //neighborのenable
- % gobgpcli neighbor <neighbor address> disable                                                 //neighborのdisable
- % gobgpcli neighbor <neighbor address> -f <family> local-rib                                   //neighborのlocal-rib表示
- % gobgpcli neighbor <neighbor address> -f <family> adj-rib-in                                  //neighborのadj-rib-in表示
- % gobgpcli neighbor <neighbor address> -f <family> rib adj-rib-out                             //neighborのadj-rib-out表示
- % gobgpcli neighbor <neighbor address> -f <family> applypolicy                                 //neighborのapplypolicy追加
- 　add <import policy name> <export policy name> <default import policy> <default export policy>
- % gobgpcli neighbor <neighbor address> -f <family> applypolicy del　　　　　　　                 //neighborのapplypolicy削除
- % gobgpcli neighbor <neighbor address> -f <family> applypolicy                                 //neighborのapplypolicy表示
- ```
+```
 
-## policyサブコマンド
-### prefix
+### neighborの各種操作(shutdown/reset/softreset/enable/disable)
+```shell
+ % gobgpcli neighbor <neighbor address> shutdown                                               
+ % gobgpcli neighbor <neighbor address> reset                                                  
+ % gobgpcli neighbor <neighbor address> softreset -f <family>
+ % gobgpcli neighbor <neighbor address> softresetin -f <family>
+ % gobgpcli neighbor <neighbor address> softresetout -f <family>
+ % gobgpcli neighbor <neighbor address> enable                                               
+ % gobgpcli neighbor <neighbor address> disable                                              
 ```
- % gobgpcli policy prefix add <prefix name> <prefix> //prefix追加
- % gobgpcli policy prefix del                        //prefix全削除
- % gobgpcli policy prefix del <prefix name>          //prefix削除
- % gobgpcli policy prefix                            //prefix一覧表示
- % gobgpcli policy prefix <prefix name>              //prefix表示
+
+### ribの表示(local-rib/adj-rib-in/adj-rib-out)
+```shell
+ % gobgpcli neighbor <neighbor address> local-rib -f <family>
+ % gobgpcli neighbor <neighbor address> adj-rib-in -f <family>
+ % gobgpcli neighbor <neighbor address> adj-rib-out -f <family> 
+ 
 ```
-### neighbor
+
+### policyの操作(add/delete/show)
+```shell
+# add
+% gobgpcli neighbor <neighbor address> policy apply import -f <family> <import policy name> <default import policy>
+% gobgpcli neighbor <neighbor address> policy apply export -f <family> <export policy name> <default export policy>
+# del
+% gobgpcli neighbor <neighbor address> policy delete import -f <family>
+% gobgpcli neighbor <neighbor address> policy delete export -f <family>
+# show
+% gobgpcli neighbor <neighbor address> policy -f <family>
 ```
- % gobgpcli policy neighbor add <neighbor name> <neighbor address> //neighbor追加
- % gobgpcli policy neighbor del                                    //neighbor全削除
- % gobgpcli policy neighbor del <neighbor name>                    //削除
- % gobgpcli policy neighbor                                        //neighbor一覧表示
- % gobgpcli policy neighbor <neighbor name>                        //表示
+
+## policyサブコマンド(PrefixSet/NeighborSet/RoutingPolicy操作用のサブコマンド)
+### prefix setの操作(add/delete/show)
+```shell
+# add
+ % gobgpcli policy prefix add <prefix name> <prefix>
+# del  prefix全削除
+ % gobgpcli policy prefix del
+# del  prefix名前指定削除
+ % gobgpcli policy prefix del <prefix name>
+# show  prefix一覧
+ % gobgpcli policy prefix
+# show  prefix名前指定表示
+ % gobgpcli policy prefix <prefix name>
+```
+### neighbor setの操作(add/delete/show)
+```shell
+# add
+% gobgpcli policy neighbor add <neighbor-set name> <neighbor address>
+# del  NeighborSet全削除
+% gobgpcli policy neighbor del      
+# del  NeighborSet名前指定削除
+% gobgpcli policy neighbor del <neighbor-set name>  
+# show  NeighborSet一覧
+% gobgpcli policy neighbor                                        
+# show  NeighborSet名前指定表示
+% gobgpcli policy neighbor <neighbor-set name> 
 ```
 ### routepolicy
 ```
