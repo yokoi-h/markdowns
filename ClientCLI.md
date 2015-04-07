@@ -12,8 +12,10 @@ gobgpcli \<subcommand> \<object>  opts...
 ## neighborサブコマンド
 ### neighborの状態表示
 ```shell
- % gobgpcli neighbor                                                                            //neighborの状態表示(一覧)
- % gobgpcli neighbor <neighbor address>                                                         //neighborの状態表示
+# neighborの状態表示(一覧)
+% gobgpcli neighbor
+# neighborの状態表示
+% gobgpcli neighbor <neighbor address>
 ```
 
 ### neighborの各種操作(shutdown/reset/softreset/enable/disable)
